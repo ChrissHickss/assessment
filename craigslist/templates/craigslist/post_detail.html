@@ -1,0 +1,13 @@
+{% extends 'craigslist/base.html' %}
+
+{% block content %}
+<h2>Category: {{ category.name }}</h2>
+<h5><a href="{% url 'category_detail' category_id=category.id %}">Click here to go back to more posts in {{ category.name }}</a></h5>
+  <div><br><br>
+    <h2>{{ post.title }}</h2>
+    <h5>{{ post.text }}</h5><br><br><br><br>
+    <a class="btn btn-default" href="{% url 'edit_post' category_id=category.id post_id=post.id %}"><span class="badge bg-secondary">Edit</span></a>
+    <a class="btn btn-default" href="{% url 'delete_post' category_id=category.id post_id=post.id %}"><span class="badge bg-secondary">Delete This Post</span></a>
+    <h6>Published at: {{ post.published_date }}</h6>
+  </div>
+{% endblock %}

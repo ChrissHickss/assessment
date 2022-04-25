@@ -1,0 +1,29 @@
+{% extends 'craigslist/base.html' %}
+
+{% block content %}
+  <div class="category">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'edit_category' category_id=category.id %}">Edit Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'delete_category' category_id=category.id %}">Delete This Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'new_post' category_id=category.id %}">Add New Post in this Category</a>
+      </li>
+    </ul>
+
+    <h2>Category: {{ category.name }}</h2>
+    <div>
+    </ul class="list-group">
+      {% for post in category.posts.all %}
+        <div>
+          <h2><a li class="list-group-item" href="{% url 'post_detail' category_id=category.id post_id=post.id %}">{{ post.title }}</a></h2>
+          <p>{{ post.text }}</p>
+        </div>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
